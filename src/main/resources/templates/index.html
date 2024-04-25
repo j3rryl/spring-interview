@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <title>Vehicles</title>
+  </head>
+  <body>
+    <div class="container card my-3">
+      <div class="card-body">
+        <h4 class="title">Post New Vehicles</h4>
+        <form th:action="@{/new-vehicle}" method="post">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Vehicle registration</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="KAX 202R"
+              name="vehicleRegistration"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Vehicle type</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="vehicleType"
+              placeholder="Saloon"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Vehicle make</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="vehicleMake"
+              placeholder="Toyota"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="container card my-3">
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Vehicle Registration</th>
+              <th scope="col">Vehicle Type</th>
+              <th scope="col">Vehicle Make</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="vehicle: ${vehicles}">
+              <th th:text="${vehicle.vehicleRegistration}"></th>
+              <th th:text="${vehicle.vehicleType}"></th>
+              <th th:text="${vehicle.vehicleMake}"></th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
